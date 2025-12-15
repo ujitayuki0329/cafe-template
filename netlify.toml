@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = ".output/public"
+
+[build.environment]
+  NODE_VERSION = "20.19.0"
+  NPM_VERSION = "10"
+  NPM_FLAGS = "--legacy-peer-deps"
+
