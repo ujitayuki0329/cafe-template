@@ -217,18 +217,22 @@ onUnmounted(() => {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  width: 100%;
+  justify-items: center;
 }
 
 @media (min-width: 640px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+    justify-items: stretch;
   }
 }
 
 @media (min-width: 1024px) {
   .gallery-grid {
     grid-template-columns: repeat(3, 1fr);
+    justify-items: stretch;
   }
 }
 
@@ -239,6 +243,9 @@ onUnmounted(() => {
   background: #f5f3f0;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+  min-height: 0;
 }
 
 .gallery-item:hover {
@@ -246,11 +253,20 @@ onUnmounted(() => {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
+.gallery-item :deep(.safe-image-wrapper) {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: block;
+}
+
 .gallery-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.6s ease;
+  display: block;
 }
 
 .gallery-item:hover .gallery-image {

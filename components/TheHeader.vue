@@ -4,6 +4,13 @@
       <div class="header-container">
         <!-- ロゴ -->
         <NuxtLink to="/" class="header-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 3H18C19.1 3 20 3.9 20 5V8C20 9.1 19.1 10 18 10H17V19C17 20.1 16.1 21 15 21H9C7.9 21 7 20.1 7 19V10H6C4.9 10 4 9.1 4 8V5C4 3.9 4.9 3 6 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 10V19H15V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4 8H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
           <span class="logo-text">{{ storeConfig.name }}</span>
         </NuxtLink>
 
@@ -107,15 +114,16 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
+  background: transparent;
   border-bottom: 1px solid transparent;
   transition: all 0.3s ease;
 }
 
 .header-scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  border-bottom-color: #e8e8e8;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: rgba(232, 232, 232, 0.3);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
@@ -146,18 +154,72 @@ onUnmounted(() => {
 
 .header-logo {
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   transition: opacity 0.3s ease;
 }
 
 .header-logo:hover {
-  opacity: 0.7;
+  opacity: 0.8;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 8px;
+  flex-shrink: 0;
+  color: white;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.logo-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+}
+
+.header-scrolled .logo-icon {
+  background: rgba(201, 169, 97, 0.1);
+  color: #1a1a1a;
+}
+
+.header-logo:hover .logo-icon {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.header-scrolled .header-logo:hover .logo-icon {
+  background: rgba(201, 169, 97, 0.2);
+}
+
+@media (min-width: 768px) {
+  .logo-icon {
+    width: 3rem;
+    height: 3rem;
+    padding: 0.625rem;
+  }
 }
 
 .logo-text {
   font-size: 1.25rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
+
+.header-scrolled .logo-text {
   color: #1a1a1a;
+  text-shadow: none;
 }
 
 @media (min-width: 768px) {
@@ -181,7 +243,7 @@ onUnmounted(() => {
 .nav-link {
   position: relative;
   text-decoration: none;
-  color: #1a1a1a;
+  color: white;
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -189,6 +251,12 @@ onUnmounted(() => {
   padding: 0.5rem 0;
   transition: color 0.3s ease;
   overflow: hidden;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header-scrolled .nav-link {
+  color: #1a1a1a;
+  text-shadow: none;
 }
 
 .nav-underline {
@@ -197,8 +265,12 @@ onUnmounted(() => {
   left: 0;
   width: 0;
   height: 1px;
-  background: #1a1a1a;
+  background: white;
   transition: width 0.3s ease;
+}
+
+.header-scrolled .nav-underline {
+  background: #1a1a1a;
 }
 
 .nav-link:hover .nav-underline {
@@ -230,8 +302,14 @@ onUnmounted(() => {
 .hamburger-line {
   width: 24px;
   height: 1px;
-  background: #1a1a1a;
+  background: white;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header-scrolled .hamburger-line {
+  background: #1a1a1a;
+  box-shadow: none;
 }
 
 .mobile-menu-button.active .hamburger-line:nth-child(1) {

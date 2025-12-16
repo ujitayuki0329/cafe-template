@@ -231,13 +231,23 @@ import { storeConfig } from '~/config/store'
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #f5f3f0;
+  min-height: 0;
+}
+
+.menu-item-image-wrapper :deep(.safe-image-wrapper) {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: block;
 }
 
 .menu-item-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.6s ease;
+  display: block;
 }
 
 .menu-item:hover .menu-item-image {
